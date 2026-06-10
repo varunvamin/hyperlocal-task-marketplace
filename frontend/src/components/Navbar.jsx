@@ -16,7 +16,7 @@ const Navbar = () => {
                 <Briefcase size={24} />
               </div>
               <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 tracking-tight">
-                JobLeno
+                B2R
               </span>
             </Link>
           </div>
