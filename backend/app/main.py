@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .database import engine, Base
+from .models import user, job, application
 from .routers import auth, users, jobs
 
 # Create the database tables if they don't exist
