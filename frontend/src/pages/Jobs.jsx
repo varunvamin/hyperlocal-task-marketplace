@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import api from '../services/api';
 import JobCard from '../components/JobCard';
 import SearchBar from '../components/SearchBar';
 
 const Jobs = () => {
+  const [searchParams] = useSearchParams();
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
+  const [locationQuery, setLocationQuery] = useState(searchParams.get('loc') || '');
 
   useEffect(() => {
     api.get('/jobs')
@@ -16,8 +19,8 @@ const Jobs = () => {
   }, []);
 
   const filteredJobs = jobs.filter(job => 
-    job.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    job.location.toLowerCase().includes(searchQuery.toLowerCase())
+    (searchQuery === '' || job.title.toLowerCase().includes(searchQuery.toLowerCase())) &&
+    (locationQuery === '' || job.location.toLowerCase().includes(locationQuery.toLowerCase()))
   );
 
   return (

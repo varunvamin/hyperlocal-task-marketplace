@@ -1,59 +1,149 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { Briefcase, User, LogOut, PlusCircle } from 'lucide-react';
+import { User, LogOut, PlusCircle, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
+
+  const navLinkClass = (path) =>
+    `text-sm font-medium transition-colors duration-200 ${
+      isActive(path)
+        ? 'text-blue-600'
+        : 'text-gray-600 hover:text-blue-600'
+    }`;
 
   return (
-    <nav className="sticky top-0 z-50 w-full backdrop-blur-md bg-white/70 border-b border-gray-200 shadow-sm transition-all duration-300">
+    <nav className="sticky top-0 z-50 w-full backdrop-blur-md bg-white/80 border-b border-gray-200/80 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-1.5 rounded-lg transform group-hover:rotate-12 transition-transform duration-300">
-                <Briefcase size={24} />
-              </div>
-              <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 tracking-tight">
-                B2R
-              </span>
-            </Link>
+
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2.5 group shrink-0">
+            <div className="bg-blue-600 text-white px-2 py-1 rounded-lg text-sm font-black group-hover:bg-blue-700 transition-colors">
+              b2r
+            </div>
+            <span className="text-lg font-bold text-gray-900 hidden sm:inline">
+              Berozgaar to Rozgaar
+            </span>
+          </Link>
+
+          {/* Desktop Nav Links */}
+          <div className="hidden md:flex items-center gap-8">
+            <Link to="/" className={navLinkClass('/')}>Home</Link>
+            <Link to="/jobs" className={navLinkClass('/jobs')}>Jobs</Link>
+            <Link to="/dashboard" className={navLinkClass('/dashboard')}>Dashboard</Link>
+            <Link to="/profile" className={navLinkClass('/profile')}>Profile</Link>
           </div>
-          
-          <div className="flex items-center space-x-6">
-            <Link to="/jobs" className="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Find Jobs</Link>
+
+          {/* Desktop Auth Buttons */}
+          <div className="hidden md:flex items-center gap-4">
             {user ? (
               <>
-                <Link to="/post-job" className="flex items-center gap-1.5 text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
-                  <PlusCircle size={18} />
+                <Link
+                  to="/post-job"
+                  className="flex items-center gap-1.5 text-blue-600 hover:text-blue-700 font-semibold text-sm transition-colors"
+                >
+                  <PlusCircle size={16} />
                   <span>Post a Job</span>
                 </Link>
-                <div className="h-6 w-px bg-gray-300 mx-2"></div>
-                <Link to="/dashboard" className="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Dashboard</Link>
-                <Link to="/profile" className="flex items-center gap-2 text-gray-700 hover:text-indigo-600 font-medium transition-colors">
-                  <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">
-                    {user.name.charAt(0).toUpperCase()}
+                <div className="h-5 w-px bg-gray-300"></div>
+                <Link to="/profile" className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm">
+                    {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
                   </div>
                 </Link>
-                <button 
+                <button
                   onClick={logout}
-                  className="flex items-center gap-1.5 text-gray-500 hover:text-red-500 font-medium transition-colors"
+                  className="flex items-center gap-1.5 text-gray-400 hover:text-red-500 transition-colors cursor-pointer"
+                  title="Logout"
                 >
                   <LogOut size={18} />
                 </button>
               </>
             ) : (
               <>
-                <Link to="/login" className="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Log In</Link>
-                <Link to="/register" className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-full font-medium shadow-md shadow-indigo-200 transition-all hover:shadow-lg hover:-translate-y-0.5">
+                <Link
+                  to="/login"
+                  className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/register"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm hover:shadow-md transition-all"
+                >
                   Sign Up
                 </Link>
               </>
             )}
           </div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="md:hidden p-2 text-gray-600 hover:text-blue-600 transition-colors cursor-pointer"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileOpen && (
+        <div className="md:hidden bg-white border-t border-gray-100 shadow-lg animate-fadeIn">
+          <div className="px-4 py-4 space-y-3">
+            <Link to="/" className={`block py-2 ${navLinkClass('/')}`} onClick={() => setMobileOpen(false)}>Home</Link>
+            <Link to="/jobs" className={`block py-2 ${navLinkClass('/jobs')}`} onClick={() => setMobileOpen(false)}>Jobs</Link>
+            <Link to="/dashboard" className={`block py-2 ${navLinkClass('/dashboard')}`} onClick={() => setMobileOpen(false)}>Dashboard</Link>
+            <Link to="/profile" className={`block py-2 ${navLinkClass('/profile')}`} onClick={() => setMobileOpen(false)}>Profile</Link>
+            
+            <div className="pt-3 border-t border-gray-100 space-y-2">
+              {user ? (
+                <>
+                  <Link
+                    to="/post-job"
+                    className="flex items-center gap-2 py-2 text-blue-600 font-semibold text-sm"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <PlusCircle size={16} />
+                    Post a Job
+                  </Link>
+                  <button
+                    onClick={() => { logout(); setMobileOpen(false); }}
+                    className="flex items-center gap-2 py-2 text-red-500 font-medium text-sm w-full cursor-pointer"
+                  >
+                    <LogOut size={16} />
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    className="block py-2 text-sm font-medium text-gray-600"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="block text-center bg-blue-600 text-white py-2.5 rounded-lg text-sm font-bold"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Sign Up
+                  </Link>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
