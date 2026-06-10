@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
   Search, MapPin, ArrowRight, 
   UserPlus, SearchCheck, FileText, Trophy,
   Clock
 } from 'lucide-react';
-import Footer from '../components/Footer';
 import api from '../services/api';
 
 /* ──────────────────────────────────────────
@@ -14,7 +13,7 @@ import api from '../services/api';
 const AnimatedCounter = ({ target, suffix = '' }) => {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
-  const ref = React.useRef(null);
+  const ref = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -366,9 +365,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* ═══════════ FOOTER ═══════════ */}
-      <Footer />
     </div>
   );
 };

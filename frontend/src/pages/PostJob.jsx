@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import { DollarSign, MapPin, AlignLeft, Briefcase } from 'lucide-react';
@@ -23,7 +23,7 @@ const PostJob = () => {
         location
       });
       navigate('/dashboard');
-    } catch (err) {
+    } catch {
       setError('Failed to post job. Please try again.');
       setLoading(false);
     }
@@ -32,12 +32,12 @@ const PostJob = () => {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
       <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-10 text-white">
+        <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-10 text-white">
           <h1 className="text-3xl font-black mb-2 flex items-center gap-3">
             <Briefcase size={32} />
             Post a New Task
           </h1>
-          <p className="text-indigo-100 font-medium text-lg">Describe what you need help with and set a fair price.</p>
+          <p className="text-blue-100 font-medium text-lg">Describe what you need help with and set a fair price.</p>
         </div>
         
         <div className="p-8">
@@ -53,7 +53,7 @@ const PostJob = () => {
               <input
                 type="text"
                 required
-                className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 font-medium text-slate-900 transition-all bg-slate-50 focus:bg-white"
+                className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 font-medium text-slate-900 transition-all bg-slate-50 focus:bg-white"
                 placeholder="e.g., Help moving a couch"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -63,13 +63,13 @@ const PostJob = () => {
             <div>
               <label className="block text-sm font-bold text-slate-700 mb-2">Description</label>
               <div className="relative group">
-                <div className="absolute top-3 left-0 pl-4 pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
+                <div className="absolute top-3 left-0 pl-4 pointer-events-none text-slate-400 group-focus-within:text-blue-500 transition-colors">
                   <AlignLeft size={20} />
                 </div>
                 <textarea
                   required
                   rows={4}
-                  className="w-full pl-11 pr-4 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 font-medium text-slate-900 transition-all bg-slate-50 focus:bg-white resize-none"
+                  className="w-full pl-11 pr-4 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 font-medium text-slate-900 transition-all bg-slate-50 focus:bg-white resize-none"
                   placeholder="Provide details about the task, requirements, and timing..."
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
@@ -89,7 +89,7 @@ const PostJob = () => {
                     min="1"
                     step="0.01"
                     required
-                    className="w-full pl-11 pr-4 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 font-medium text-slate-900 transition-all bg-slate-50 focus:bg-white"
+                    className="w-full pl-11 pr-4 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 font-medium text-slate-900 transition-all bg-slate-50 focus:bg-white"
                     placeholder="50.00"
                     value={pay}
                     onChange={(e) => setPay(e.target.value)}
@@ -99,13 +99,13 @@ const PostJob = () => {
               <div>
                 <label className="block text-sm font-bold text-slate-700 mb-2">Location</label>
                 <div className="relative group">
-                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-500 transition-colors">
                     <MapPin size={20} />
                   </div>
                   <input
                     type="text"
                     required
-                    className="w-full pl-11 pr-4 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 font-medium text-slate-900 transition-all bg-slate-50 focus:bg-white"
+                    className="w-full pl-11 pr-4 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 font-medium text-slate-900 transition-all bg-slate-50 focus:bg-white"
                     placeholder="e.g., Downtown, 123 Main St"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
@@ -118,7 +118,7 @@ const PostJob = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center items-center py-4 px-4 text-base font-bold rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-500/50 shadow-lg shadow-indigo-600/20 transition-all hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full flex justify-center items-center py-4 px-4 text-base font-bold rounded-xl text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/50 shadow-lg shadow-blue-600/20 transition-all hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {loading ? 'Posting...' : 'Post Job'}
               </button>

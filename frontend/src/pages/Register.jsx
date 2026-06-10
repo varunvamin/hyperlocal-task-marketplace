@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { Mail, Lock, User as UserIcon, UserPlus } from 'lucide-react';
@@ -39,42 +39,42 @@ const Register = () => {
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-4">
               <div className="relative group">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-500 transition-colors">
                   <UserIcon size={20} />
                 </div>
                 <input
                   name="name"
                   type="text"
                   required
-                  className="w-full pl-11 pr-4 py-3.5 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 font-medium text-slate-900 placeholder-slate-400 transition-all bg-slate-50 focus:bg-white"
+                  className="w-full pl-11 pr-4 py-3.5 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 font-medium text-slate-900 placeholder-slate-400 transition-all bg-slate-50 focus:bg-white"
                   placeholder="Full name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="relative group">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-500 transition-colors">
                   <Mail size={20} />
                 </div>
                 <input
                   name="email"
                   type="email"
                   required
-                  className="w-full pl-11 pr-4 py-3.5 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 font-medium text-slate-900 placeholder-slate-400 transition-all bg-slate-50 focus:bg-white"
+                  className="w-full pl-11 pr-4 py-3.5 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 font-medium text-slate-900 placeholder-slate-400 transition-all bg-slate-50 focus:bg-white"
                   placeholder="Email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="relative group">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-500 transition-colors">
                   <Lock size={20} />
                 </div>
                 <input
                   name="password"
                   type="password"
                   required
-                  className="w-full pl-11 pr-4 py-3.5 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 font-medium text-slate-900 placeholder-slate-400 transition-all bg-slate-50 focus:bg-white"
+                  className="w-full pl-11 pr-4 py-3.5 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 font-medium text-slate-900 placeholder-slate-400 transition-all bg-slate-50 focus:bg-white"
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -84,7 +84,7 @@ const Register = () => {
 
             <button
               type="submit"
-              className="w-full flex justify-center items-center gap-2 py-4 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-500/50 shadow-lg shadow-indigo-600/20 transition-all hover:-translate-y-0.5 active:translate-y-0"
+              className="w-full flex justify-center items-center gap-2 py-4 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/50 shadow-lg shadow-blue-600/20 transition-all hover:-translate-y-0.5 active:translate-y-0"
             >
               <UserPlus size={20} />
               Sign up
@@ -95,7 +95,7 @@ const Register = () => {
         <div className="bg-slate-50 px-8 py-6 border-t border-slate-100 text-center">
           <p className="text-slate-600 font-medium text-sm">
             Already have an account?{' '}
-            <Link to="/login" className="font-bold text-indigo-600 hover:text-indigo-500 hover:underline">
+            <Link to="/login" className="font-bold text-blue-600 hover:text-blue-500 hover:underline">
               Log in instead
             </Link>
           </p>

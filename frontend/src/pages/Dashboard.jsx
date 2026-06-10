@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import api from '../services/api';
 import JobCard from '../components/JobCard';
@@ -25,7 +25,7 @@ const Dashboard = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
       <div className="flex items-center gap-3 mb-8 pb-6 border-b border-gray-200">
-        <div className="bg-indigo-100 p-3 rounded-xl text-indigo-600">
+        <div className="bg-blue-100 p-3 rounded-xl text-blue-600">
           <LayoutDashboard size={28} />
         </div>
         <div>
@@ -41,7 +41,7 @@ const Dashboard = () => {
         
         {loading ? (
           <div className="flex justify-center py-12">
-            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-indigo-600"></div>
+            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600"></div>
           </div>
         ) : jobs.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -56,7 +56,7 @@ const Dashboard = () => {
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">No jobs posted yet</h3>
             <p className="text-gray-500 mb-6 max-w-md mx-auto">You haven't posted any jobs. Create your first task to get help from locals.</p>
-            <Link to="/post-job" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 shadow-md hover:-translate-y-0.5 transition-all">
+            <Link to="/post-job" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-blue-600 hover:bg-blue-700 shadow-md hover:-translate-y-0.5 transition-all">
               Post a Job Now
             </Link>
           </div>

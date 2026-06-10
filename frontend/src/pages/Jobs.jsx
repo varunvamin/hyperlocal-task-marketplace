@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import api from '../services/api';
 import JobCard from '../components/JobCard';
@@ -35,7 +35,7 @@ const Jobs = () => {
 
       {loading ? (
         <div className="flex justify-center py-20">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
         </div>
       ) : (
         <>
@@ -54,7 +54,7 @@ const Jobs = () => {
               <p className="text-slate-500 text-lg font-medium">No jobs found matching your search.</p>
               <button 
                 onClick={() => setSearchQuery('')}
-                className="mt-4 text-indigo-600 font-bold hover:text-indigo-800"
+                className="mt-4 text-blue-600 font-bold hover:text-blue-800"
               >
                 Clear Search
               </button>

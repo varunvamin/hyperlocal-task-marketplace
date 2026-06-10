@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { User, Mail, Shield, Star, Award } from 'lucide-react';
+import { Mail, Shield, Star, Award } from 'lucide-react';
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -12,11 +12,11 @@ const Profile = () => {
       <h1 className="text-3xl font-bold text-gray-900 mb-8">My Profile</h1>
       
       <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
-        <div className="h-32 bg-gradient-to-r from-indigo-500 to-purple-600"></div>
+        <div className="h-32 bg-gradient-to-r from-blue-500 to-purple-600"></div>
         
         <div className="px-8 pb-8">
           <div className="relative flex justify-between items-end -mt-16 mb-8">
-            <div className="w-32 h-32 rounded-full border-4 border-white bg-indigo-100 flex items-center justify-center text-indigo-600 text-5xl font-black shadow-md">
+            <div className="w-32 h-32 rounded-full border-4 border-white bg-blue-100 flex items-center justify-center text-blue-600 text-5xl font-black shadow-md">
               {user.name.charAt(0).toUpperCase()}
             </div>
             
@@ -38,7 +38,7 @@ const Profile = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-6 border-t border-slate-100">
               <div className="bg-slate-50 p-4 rounded-2xl flex items-center gap-4">
-                <div className="bg-indigo-100 text-indigo-600 p-3 rounded-xl">
+                <div className="bg-blue-100 text-blue-600 p-3 rounded-xl">
                   <Shield size={24} />
                 </div>
                 <div>
