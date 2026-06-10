@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
-  Search, MapPin, Briefcase, ArrowRight, 
+  Search, MapPin, ArrowRight, 
   UserPlus, SearchCheck, FileText, Trophy,
   Clock
 } from 'lucide-react';

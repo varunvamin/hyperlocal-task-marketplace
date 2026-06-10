@@ -9,7 +9,7 @@ const Jobs = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
-  const [locationQuery, setLocationQuery] = useState(searchParams.get('loc') || '');
+  const [locationQuery] = useState(searchParams.get('loc') || '');
 
   useEffect(() => {
     api.get('/jobs')
